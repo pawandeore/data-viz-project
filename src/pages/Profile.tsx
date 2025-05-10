@@ -2,9 +2,13 @@
 import React from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atoms';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebaseConfig';
+import { signOut } from 'firebase/auth';
 
 const Profile: React.FC = () => {
   const [user] = useAtom(userAtom);
+  const navigate = useNavigate();
 
   const getInitials = (name: string | null | undefined) => {
     if (!name) return "?";
@@ -13,12 +17,21 @@ const Profile: React.FC = () => {
     return initials.toUpperCase().slice(0, 2);
   }
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/login');
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+
   if (!user) {
     return <p>Loading user data or not logged in...</p>; // Should be handled by ProtectedRoute mostly
   }
 
   return (
-    <div style={{ textAlign: 'center', padding: '20px' }}>
+    <div className='p-10 text-center'>
       <h2>Profile</h2>
       {user.photoURL ? (
         <img
@@ -53,7 +66,12 @@ const Profile: React.FC = () => {
       )}
       <h3>Welcome, {user.displayName || user.email}!</h3>
       <p>Email: {user.email}</p>
-      {/* <p>UID: {user.uid}</p> */}
+      <button
+        onClick={handleLogout}
+        className='bg-red-500 *:hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-5'
+      >
+        Logout
+      </button>
     </div>
   );
 };
