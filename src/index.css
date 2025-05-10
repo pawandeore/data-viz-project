@@ -12,3 +12,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.bg-primary-black {
+  background-color: #161618;
+}

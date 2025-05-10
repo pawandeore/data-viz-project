@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import DashboardLayout from './layouts/DashboardLayout';
 import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
 
 function App() {
   const [user] = useAtom(userAtom);
@@ -18,16 +19,16 @@ function App() {
     { !user &&  (<Navbar user={user} /> ) }
     <Routes>
       {/* Redirect root based on authentication */}
-      <Route path="/" element={user ? <Navigate to="/profile" /> : <Navigate to="/login" />} />
+      <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
 
-      <Route path="/login" element={!user ? <Login /> : <Navigate to="/profile" />} />
-      <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/profile" />} />
+      <Route path="/login" element={!user ? <Login /> : <Navigate to="/dashboard" />} />
+      <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/dashboard" />} />
 
       {/* Protected routes with layout */}
       <Route element={<ProtectedRoute />}>
         <Route element={<DashboardLayout />}>
           <Route path="/profile" element={<Profile />} />
-          {/* Add more authenticated pages here */}
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Route>
     </Routes>
