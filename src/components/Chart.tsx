@@ -54,7 +54,7 @@ const ChartSection: React.FC = () => {
     } else if (selectedMetric === 'Unsatisfied Demand %' || selectedMetric === 'Utilization') {
       return `${value}%`;
     }
-    return value;
+    return value.toString();
   };
 
   const CustomTooltip = ({ active, payload }: any) => {
