@@ -1,9 +1,9 @@
-// src/pages/DashboardPage.tsx
+// src/pages/Profile.tsx
 import React from 'react';
 import { useAtom } from 'jotai';
 import { userAtom } from '../atoms';
 
-const DashboardPage: React.FC = () => {
+const Profile: React.FC = () => {
   const [user] = useAtom(userAtom);
 
   const getInitials = (name: string | null | undefined) => {
@@ -19,7 +19,7 @@ const DashboardPage: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
-      <h2>Dashboard</h2>
+      <h2>Profile</h2>
       {user.photoURL ? (
         <img
           src={user.photoURL}
@@ -53,10 +53,9 @@ const DashboardPage: React.FC = () => {
       )}
       <h3>Welcome, {user.displayName || user.email}!</h3>
       <p>Email: {user.email}</p>
-      <p>UID: {user.uid}</p>
-      {/* You can display other user information available in the user object */}
+      {/* <p>UID: {user.uid}</p> */}
     </div>
   );
 };
 
-export default DashboardPage;
+export default Profile;
