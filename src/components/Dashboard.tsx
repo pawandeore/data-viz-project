@@ -3,8 +3,16 @@ import Header from "./Header"
 import ScenarioResults from "./ScenarioResults"
 import Chart from "./Chart"
 import StatsCard from "./StatsCard"
+import VariableDetails from "./VariableDetails"
+import { useAtom } from "jotai"
+import { editDetailsAtom } from "../atoms"
 
 const Dashboard = () => {
+   const [open, setOpen] = useAtom(editDetailsAtom);
+
+   const modalHandler = () => {
+      setOpen(!open);
+   }
   return (
     <>
       <Header />
@@ -23,7 +31,7 @@ const Dashboard = () => {
             <button className="bg-neutral-800 border border-neutral-600 hover:bg-neutral-700 rounded-md p-3 transition-colors">
               <RotateCwIcon className="h-3.5 w-3.5 text-neutral-300" />
             </button>
-            <button className="bg-neutral-800 border border-neutral-600 hover:bg-neutral-700 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors">
+            <button onClick={modalHandler} className="bg-neutral-800 border border-neutral-600 hover:bg-neutral-700 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors">
               Edit Variables
             </button>
             <button className="bg-neutral-800 border border-neutral-600 hover:bg-neutral-700 rounded-md p-3 transition-colors">
@@ -36,6 +44,7 @@ const Dashboard = () => {
           <Chart />
           <StatsCard />
         </div>
+        <VariableDetails />
       </div>
       
     </>
