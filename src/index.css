@@ -16,3 +16,10 @@
 .bg-primary-black {
   background-color: #161618;
 }
+.bg-card{
+  background-color: #222324;
+}
+body{
+  background-color: #161618;
+  color: #fff;
+}

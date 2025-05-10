@@ -5,10 +5,10 @@ import VeriticalSidebar from '../components/VeriticalSidebar';
 const DashboardLayout = () => {
   return (
     <div className="flex min-h-screen">
-      <aside className="w-20 border-r">
+      <aside className="w-20">
         <VeriticalSidebar />
       </aside>
-      <main className="flex-1 p-6 bg-white">
+      <main className="flex-1">
         <Outlet />
       </main>
     </div>
