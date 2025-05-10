@@ -1,3 +1,14 @@
+# Features
+ - Responsive UI, Clean 100% copy of Provided figma design
+ - Sign in / Sign up with google via Firebase
+ - Have used React+Ts via vite
+ - Edit variable Slide-Over Card Screen implemented
+
+# Time Spent
+ - 4.5 Hours
+
+# How to setup
+
 - Make sure you have NodeJs installed on your system
 
 - Download or clone this repo - https://github.com/pawandeore/data-viz-project
