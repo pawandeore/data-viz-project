@@ -1,13 +1,7 @@
+import React from 'react';
 
+const HomePage: React.FC = () => {
+  return <h2>Welcome to the Home Page!</h2>;
+};
 
-const Home = () => {
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </div>
-  )
-}
-
-export default Home
+export default HomePage;
